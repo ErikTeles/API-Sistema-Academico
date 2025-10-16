@@ -1,0 +1,33 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    // File Layout
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+    "target": "es2018",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": false,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "skipLibCheck": true,
+
+    // For nodejs:
+    "lib": ["ES5", "ES6", "ES2018"],
+    "types": ["node"]
+    // and npm install -D @types/node
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
