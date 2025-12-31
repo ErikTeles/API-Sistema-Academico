@@ -32,6 +32,9 @@ export class Disciplina {
   @Column({ type: "integer", nullable: false })
   in_carga_horaria: number;
 
+  @Column({ type: "integer" })
+  id_curso: number;
+
   @ManyToOne(() => Curso, (curso) => curso.disciplinas, {
     onDelete: "NO ACTION",
     onUpdate: "NO ACTION",
@@ -40,7 +43,10 @@ export class Disciplina {
     name: "id_curso",
     foreignKeyConstraintName: "fk_curso_to_disciplina",
   })
-  id_curso: Curso;
+  curso: Curso;
+
+  @Column({ type: "integer", nullable: false })
+  id_tipo_disciplina: number;
 
   @ManyToOne(
     () => TipoDisciplina,
@@ -51,7 +57,7 @@ export class Disciplina {
     name: "id_tipo_disciplina",
     foreignKeyConstraintName: "fk_tipo_disciplina_to_disciplina",
   })
-  id_tipo_disciplina: TipoDisciplina;
+  tipo_disciplina: TipoDisciplina;
 
   @OneToMany(() => Cursa, (cursa) => cursa.id_disciplina)
   cursas: Cursa[];

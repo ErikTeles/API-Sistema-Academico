@@ -33,12 +33,15 @@ export class Professor {
   @Column({ type: "varchar", length: 13, nullable: false })
   tx_telefone: string;
 
+  @Column({ type: "integer", nullable: false })
+  id_titulo: number;
+
   @ManyToOne(() => Titulo, (titulo) => titulo.professores, { nullable: false })
   @JoinColumn({
     name: "id_titulo",
     foreignKeyConstraintName: "fk_titulo_to_professor",
   })
-  id_titulo: Titulo;
+  titulo: Titulo;
 
   @ManyToMany(() => Disciplina, (disciplina) => disciplina.professores)
   @JoinTable({

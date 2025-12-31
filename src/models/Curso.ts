@@ -18,6 +18,9 @@ export class Curso {
   @Column({ type: "varchar", length: 150, nullable: false, unique: true })
   tx_descricao: string;
 
+  @Column({type : "integer", nullable: false})
+  id_instituicao: number;
+
   @ManyToOne(() => Instituicao, (instituicao) => instituicao.cursos, {
     nullable: false,
   })
@@ -25,7 +28,10 @@ export class Curso {
     name: "id_instituicao",
     foreignKeyConstraintName: "fk_instituicao_to_curso",
   })
-  id_instituicao: Instituicao;
+  instituicao: Instituicao;
+
+  @Column({type : "integer", nullable: false})
+  id_tipo_curso: number;
 
   @ManyToOne(() => TipoCurso, (tipoCurso) => tipoCurso.cursos, {
     nullable: false,
@@ -34,7 +40,7 @@ export class Curso {
     name: "id_tipo_curso",
     foreignKeyConstraintName: "fk_tipo_curso_to_curso",
   })
-  id_tipo_curso: TipoCurso;
+  tipo_curso: TipoCurso;
 
   @OneToMany(() => Disciplina, (disciplina) => disciplina.id_curso)
   disciplinas: Disciplina[];
