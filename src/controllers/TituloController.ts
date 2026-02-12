@@ -6,6 +6,8 @@ const routesTitulo = Router();
 // CRUD da tabela Titulo
 routesTitulo.get("/", new TituloService().allTitulos);
 
+routesTitulo.get("/:id", new TituloService().getTituloById);
+
 routesTitulo.post("/", new TituloService().createTitulo);
 
 routesTitulo.put("/:id", new TituloService().updateTitulo);

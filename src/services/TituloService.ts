@@ -25,6 +25,26 @@ export class TituloService {
     }
   }
 
+  async getTituloById(req: Request, res: Response) {
+    const { id } = req.params;
+
+    try {
+      const titulo = await TituloRepository.findOneBy({
+        id_titulo: Number(id),
+      });
+
+      if (!titulo) {
+        return res.status(404).json({ message: "Titulo não encontrado!" });
+      }
+
+      return res.status(200).json(titulo);
+    } catch (error) {
+      console.log(error);
+
+      return res.status(500).json({ message: "Erro ao buscar titulo!" });
+    }
+  }
+
   async updateTitulo(req: Request, res: Response) {
     const { id } = req.params;
     const { tx_descricao } = req.body;
